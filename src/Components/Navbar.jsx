@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-[#15151580]">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -14,71 +14,63 @@ const Navbar = () => {
         
       </ul>
     </div>
-    <a className="text-xl">LOGO</a>
+    <div className="text-[30px]">Bistro Boss</div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
     <li><NavLink
   to="/"
-  style={({ isActive }) => {
+  style={({ isActive, isTransitioning }) => {
     return {
-      fontWeight: isActive ? "bold" : "",
-      color:isActive?"#EEFF25":"#fff",
-      backgroundColor:"#fff"
+      fontWeight: isActive ? "bold" : "bold",
+      color: isActive ? "#EEFF25" : "#fff",
+      viewTransitionName: isTransitioning ? "slide" : "",
+      background:isActive ? "none" : "none",
     };
   }}
 >
   HOME
 </NavLink></li>
     <li><NavLink
-  to="/"
-  style={({ isActive }) => {
+  to="/dashboard"
+  style={({ isActive, isTransitioning }) => {
     return {
-      fontWeight: isActive ? "bold" : "",
-      color:isActive?"#EEFF25":"#fff",
-      backgroundColor:"#fff"
-    };
-  }}
->
-CONTACT US
-</NavLink></li>
-    <li><NavLink
-  to="/"
-  style={({ isActive }) => {
-    return {
-      fontWeight: isActive ? "bold" : "",
-      color:isActive?"#EEFF25":"#fff",
-      backgroundColor:"#fff"
+      fontWeight: isActive ? "bold" : "bold",
+      color: isActive ? "#EEFF25" : "#fff",
+      viewTransitionName: isTransitioning ? "slide" : "",
+      background:isActive ? "none" : "none",
     };
   }}
 >
 DASHBOARD
 </NavLink></li>
     <li><NavLink
-  to="/"
-  style={({ isActive }) => {
+  to="/ourMenu"
+  style={({ isActive, isTransitioning }) => {
     return {
-      fontWeight: isActive ? "bold" : "",
-      color:isActive?"#EEFF25":"#fff",
-      backgroundColor:"#fff"
-    };
-  }}
->
-OUR SHOP
-</NavLink></li>
-    
-    <li><NavLink
-  to="/"
-  style={({ isActive }) => {
-    return {
-      fontWeight: isActive ? "bold" : "",
-      color:isActive?"#EEFF25":"#fff",
-      backgroundColor:"#fff"
+      fontWeight: isActive ? "bold" : "bold",
+      color: isActive ? "#EEFF25" : "#fff",
+      viewTransitionName: isTransitioning ? "slide" : "",
+      background:isActive ? "none" : "none",
     };
   }}
 >
 OUR MENU
 </NavLink></li>
+    <li><NavLink
+  to="/ourShop"
+  style={({ isActive, isTransitioning }) => {
+    return {
+      fontWeight: isActive ? "bold" : "bold",
+      color: isActive ? "#EEFF25" : "#fff",
+      viewTransitionName: isTransitioning ? "slide" : "",
+      background:isActive ? "none" : "none",
+    };
+  }}
+>
+OUR SHOP
+</NavLink></li>
+
     
    
     </ul>

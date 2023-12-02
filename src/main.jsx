@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import Routes from './Route/Routes'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import Routes from "./Route/Routes";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Routes></Routes>
-  </React.StrictMode>,
-)
+    <div className="max-w-7xl mx-auto">
+      <Routes></Routes>
+    </div>
+  </React.StrictMode>
+);
