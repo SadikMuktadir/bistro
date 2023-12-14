@@ -5,6 +5,7 @@ import Carousel2 from "./Carousel2";
 import CheckIt from "./CheckIt";
 import HomeMenu from "./HomeMenu";
 import Recommended from "./Recommended";
+import Testimonial from "./Testimonial";
 import SectionTitle from "./sectionTitle";
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
         <CallUs></CallUs>
         <Recommended></Recommended>
         <CheckIt></CheckIt>
+        <Testimonial></Testimonial>
       </div>
     </>
   );
