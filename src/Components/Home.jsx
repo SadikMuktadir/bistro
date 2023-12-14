@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import BistroImg from "./BistroImg";
 import Carousel2 from "./Carousel2";
 import SectionTitle from "./sectionTitle";
 
@@ -16,6 +17,7 @@ const Home = () => {
         <div>
           <Carousel2></Carousel2>
         </div>
+        <BistroImg></BistroImg>
       </div>
     </>
   );
