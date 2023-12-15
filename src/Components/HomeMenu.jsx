@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "./sectionTitle";
 import Card from "./Card";
+// import useMenu from "../Hooks/useMenu";
+import { Link } from "react-router-dom";
 
 const HomeMenu = () => {
+// const [menu] = useMenu();
   const [data, setData] = useState([]);
   useEffect(() => {
     fetch("menu.json")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) => 
+      {
         const popular = data.filter((items) => items.category === "popular");
         setData(popular);
-      });
+      }
+      // setData(data)
+      );
   }, []);
   return (
     <div>
@@ -22,6 +28,9 @@ const HomeMenu = () => {
         {data.map((item) => (
           <Card key={item._id} item={item}></Card>
         ))}
+      </div>
+      <div className="flex justify-center">
+       <Link to="/ourMenu"><button className="btn btn-ghost">View Full  Menu</button></Link>
       </div>
     </div>
   );
