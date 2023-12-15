@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import registerImage from "../../public/assets/others/authentication2.png";
 const Login = () => {
-  const handleLogin = event => {
+  const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
   };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -47,11 +48,20 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-              <input className="btn btn-outline btn-warning" type="submit" value="Login" />
+                <input
+                  className="btn btn-outline btn-warning"
+                  type="submit"
+                  value="Login"
+                />
               </div>
             </form>
             <div className="mx-auto">
-                <p className="text-[#D1A054] text-[20px] mb-4">New here? <Link to="/register"><button className="">Create a New Account</button></Link></p>
+              <p className="text-[#D1A054] text-[20px] mb-4">
+                New here?{" "}
+                <Link to="/register">
+                  <button className="">Create a New Account</button>
+                </Link>
+              </p>
             </div>
           </div>
         </div>
