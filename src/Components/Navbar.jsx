@@ -20,6 +20,21 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/contactUs"
+          style={({ isActive, isTransitioning }) => {
+            return {
+              fontWeight: isActive ? "bold" : "bold",
+              color: isActive ? "#EEFF25" : "#fff",
+              viewTransitionName: isTransitioning ? "slide" : "",
+              background: isActive ? "none" : "none",
+            };
+          }}
+        >
+          CONTACT US
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to="/dashboard"
           style={({ isActive, isTransitioning }) => {
             return {

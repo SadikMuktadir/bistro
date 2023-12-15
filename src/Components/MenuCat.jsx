@@ -5,7 +5,7 @@ const MenuCat = ({items }) => {
     <div>
       {
         <div className="grid grid-cols-2 gap-3 my-[100px]">
-          {items.map((item) => (
+          {items.slice(0,6).map((item) => (
             <Card key={item._id} item={item}></Card>
           ))}
         </div>
