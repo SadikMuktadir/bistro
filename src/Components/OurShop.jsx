@@ -4,7 +4,14 @@ import Cover from "./Cover";
 import menu2 from "../../public/assets/home/banner.jpg";
 import useMenu from "../Hooks/useMenu";
 import OurShopData from "./OurShopData";
+import { useState } from "react";
+// import { useParams } from "react-router-dom";
 const OurShop = () => {
+  // const categories = ['popular','salad','pizza','dessert','drinks','soup'];
+  // const {category} = useParams();
+  // const initialIndex = categories.indexOf(category);
+  // const [tabIndex, setTabIndex] = useState(initialIndex);
+  const [tabIndex, setTabIndex] = useState(0);
   const [menu] = useMenu();
   const popular = menu.filter((item) => item.category === "popular");
   const salad = menu.filter((item) => item.category === "salad");
@@ -22,7 +29,7 @@ const OurShop = () => {
         ></Cover>
       </div>
       <div className="">
-        <Tabs>
+        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="flex justify-center my-[80px]">
             <TabList>
               <Tab>SALAD</Tab>

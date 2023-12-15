@@ -30,7 +30,7 @@ const HomeMenu = () => {
         ))}
       </div>
       <div className="flex justify-center">
-       <Link to="/ourMenu"><button className="btn btn-ghost">View Full  Menu</button></Link>
+       <Link to="/ourMenu"><button className="btn btn-outline btn-secondary">View Full  Menu</button></Link>
       </div>
     </div>
   );

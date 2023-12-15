@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Card2 = ({ item }) => {
 const {image,name,recipe,price} = item;
   return (
@@ -16,7 +18,7 @@ const {image,name,recipe,price} = item;
           <p className=" bg-[#111827] text-center text-white p-2 w-[50px]">{price}</p>
           </div>
           <div className="card-actions justify-center">
-            <button className="btn btn-outline btn-secondary">Add To Cart</button>
+           <Link to=""><button className="btn btn-outline btn-secondary">Add To Cart</button></Link>
           </div>
         </div>
       </div>

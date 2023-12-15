@@ -33,7 +33,7 @@ const OurMenu = () => {
           ></SectionTitle>
           <MenuCat items={popular}></MenuCat>
           <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
         <div>
@@ -44,7 +44,7 @@ const OurMenu = () => {
       ></Cover>
         <MenuCat items={dessert}></MenuCat>
         <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
         <div>
@@ -55,7 +55,7 @@ const OurMenu = () => {
       ></Cover>
         <MenuCat items={soup}></MenuCat>
         <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
         <div>
@@ -66,7 +66,7 @@ const OurMenu = () => {
       ></Cover>
         <MenuCat items={salad}></MenuCat>
         <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
         <div>
@@ -77,7 +77,7 @@ const OurMenu = () => {
       ></Cover>
         <MenuCat items={pizza}></MenuCat>
         <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
         <div>
@@ -88,7 +88,7 @@ const OurMenu = () => {
       ></Cover>
         <MenuCat items={drinks}></MenuCat>
         <div className="flex justify-center">
-            <Link><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
+            <Link to="/ourShop"><button className="mb-[50px] btn btn-outline btn-secondary">ORDER YOUR FAVOURITE FOOD</button></Link>
           </div>
         </div>
       </div>
