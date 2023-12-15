@@ -122,10 +122,18 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
+              <div className="flex">
+              <div className="flex justify-center items-center mr-2">
+                <div className="h-[20px] w-[20px] mr-[10px]">
+                  <img src={user.photoURL} referrerPolicy="no-referrer" />
+                </div>
+                {user.displayName}
+              </div>
               <div>
                 <button className="btn btn-warning" onClick={handleLogOut}>
                   LogOut
                 </button>
+              </div>
               </div>
             </>
           ) : (

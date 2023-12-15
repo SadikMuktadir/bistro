@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import registerImage from "../../public/assets/others/authentication2.png";
 import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
+import Swal from 'sweetalert2'
+import { updateProfile } from "firebase/auth";
 const Register = () => {
   const navigate =useNavigate();
   const { createUser } = useContext(AuthContext);
@@ -17,6 +19,23 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        updateProfile(user,{
+            displayName:name,
+            photoURL:image
+          })
+        // updateUser(name,image)
+        // .then(() => {
+        //     console.log('profile updated')
+        //   }).catch((error) => {
+        //     console.log(error)
+        //   });
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Register Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
         navigate("/")
       })
       .catch((error) => {

@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImage from "../../public/assets/others/authentication2.png";
 import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 const Login = () => {
   const location = useLocation();
   const navigate =useNavigate();
@@ -16,6 +17,13 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
