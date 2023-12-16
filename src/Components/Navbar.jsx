@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-
+import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
@@ -84,6 +84,22 @@ const Navbar = () => {
           OUR SHOP
         </NavLink>
       </li>
+      <li>
+      <NavLink
+          to="/ourCart"
+          style={({ isActive, isTransitioning }) => {
+            return {
+              fontWeight: isActive ? "bold" : "bold",
+              color: isActive ? "#EEFF25" : "#fff",
+              viewTransitionName: isTransitioning ? "slide" : "",
+              background: isActive ? "none" : "none",
+            };
+          }}
+        >
+         <FaShoppingCart />
+         <div className="badge badge-secondary">+99</div>
+        </NavLink>
+      </li>
     </>
   );
   return (
@@ -123,17 +139,17 @@ const Navbar = () => {
           {user ? (
             <>
               <div className="flex">
-              <div className="flex justify-center items-center mr-2">
-                <div className="h-[20px] w-[20px] mr-[10px]">
-                  <img src={user.photoURL} referrerPolicy="no-referrer" />
+                <div className="flex justify-center items-center mr-2">
+                  <div className="h-[20px] w-[20px] mr-[10px]">
+                    <img src={user.photoURL} referrerPolicy="no-referrer" />
+                  </div>
+                  {user.displayName}
                 </div>
-                {user.displayName}
-              </div>
-              <div>
-                <button className="btn btn-warning" onClick={handleLogOut}>
-                  LogOut
-                </button>
-              </div>
+                <div>
+                  <button className="btn btn-warning" onClick={handleLogOut}>
+                    LogOut
+                  </button>
+                </div>
               </div>
             </>
           ) : (
