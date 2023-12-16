@@ -88,7 +88,7 @@ const Navbar = () => {
       </li>
       <li>
       <NavLink
-          to="/ourCart"
+          to="/dashboard/ourCart"
           style={({ isActive, isTransitioning }) => {
             return {
               fontWeight: isActive ? "bold" : "bold",

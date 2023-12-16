@@ -24,10 +24,6 @@ const router = createBrowserRouter([
         element:<ContactUs></ContactUs>,
       },
       {
-        path:"/dashboard",
-        element:<Dashboard></Dashboard>,
-      },
-      {
         path:"/ourMenu",
         element:<PrivetRoute><OurMenu></OurMenu></PrivetRoute>,
       },
@@ -43,11 +39,17 @@ const router = createBrowserRouter([
         path:"/login",
         element:<Login></Login>,
       },
-      {
-        path:"/ourCart",
-        element:<Cart></Cart>,
-      },
     ],
+  },
+  {
+    path:"dashboard",
+    element:<Dashboard></Dashboard>,
+    children:[
+      {
+        path:"ourCart",
+        element:<Cart></Cart>
+      },
+    ]
   },
 ]);
 

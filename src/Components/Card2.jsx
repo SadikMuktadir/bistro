@@ -8,7 +8,7 @@ const Card2 = ({ item }) => {
 const navigate = useNavigate();
 const {user} =useContext(AuthContext)
 const {_id,image,name,recipe,price} = item;
-const [refetch]=useCart();
+const [,refetch]=useCart();
 const handleAddToCart =(food)=>{
   console.log(food);
   if(user && user.email){
