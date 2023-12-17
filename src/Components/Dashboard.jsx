@@ -9,6 +9,10 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-[#D1A054]">
+        <div className="ml-[30px] mb-[50px]">
+          <h1 className="text-[25px]">BISTRO BOSS</h1>
+          <h1 className="text-[15px]">Restaurant</h1>
+        </div>
         <ul>
           <li>
             <div className="flex ml-[30px] my-[20px]">

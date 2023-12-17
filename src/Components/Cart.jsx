@@ -1,8 +1,36 @@
 import useCart from "../Hooks/useCart";
 import { MdDeleteForever  } from "react-icons/md";
+import Swal from 'sweetalert2'
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 const Cart = () => {
-  const [cart] = useCart();
+    const axiosSecure = useAxiosSecure();
+  const [cart,refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const handleDelete = (id)=>{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            axiosSecure.delete(`/carts/${id}`)
+            .then(res=>{
+                if(res.data.deletedCount>0){
+                    refetch();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                }
+            })
+        }
+      });
+  }
   return (
     <div>
       <div className="flex justify-between items-center px-[100px] py-[50px]">
@@ -47,7 +75,7 @@ const Cart = () => {
                     </td>
                     <td>{items.price}</td>
                     <th>
-                      <button className="btn btn-outline btn-error"><MdDeleteForever className="text-[30px]" /></button>
+                      <button onClick={()=>handleDelete (items._id)} className="btn btn-outline btn-error"><MdDeleteForever className="text-[30px]" /></button>
                     </th>
                   </tr>)
               }
