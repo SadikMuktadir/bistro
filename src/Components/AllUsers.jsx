@@ -19,7 +19,7 @@ const AllUsers = () => {
     },
   });
     const handleAdmin = (user) => {
-      axiosSecure.patch(`/users/${user._id}`)
+      axiosSecure.patch(`/users/admin/${user._id}`)
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           refetch();
