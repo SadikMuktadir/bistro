@@ -9,6 +9,7 @@ import Register from "../Components/Register";
 import Login from "../Components/Login";
 import PrivetRoute from "../Components/PrivetRoute";
 import Cart from "../Components/Cart";
+import AllUsers from "../Components/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
     children:[
       {
         path:"ourCart",
-        element:<Cart></Cart>
+        element:<Cart></Cart>,
+      },
+      {
+        path:"allUsers",
+        element:<AllUsers></AllUsers>,
       },
     ]
   },

@@ -57,7 +57,7 @@ const Dashboard = () => {
           <li>
             <div className="flex ml-[30px] mb-[20px]">
             <FaUsers />
-              <NavLink className="ml-2" to="/dashboard/ourCart">
+              <NavLink className="ml-2" to="/dashboard/allUsers">
               ALL USERS
               </NavLink>
             </div>

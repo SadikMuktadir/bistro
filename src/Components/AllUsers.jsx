@@ -1,0 +1,114 @@
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import SectionTitle from "./sectionTitle";
+import { MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2";
+import { FaUser } from "react-icons/fa";
+
+const AllUsers = () => {
+  const axiosSecure = useAxiosSecure();
+  const { data: users = [], refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users");
+      return res.data;
+    },
+  });
+  const handleAdmin =()=>{
+    console.log('done')
+  }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+  return (
+    <div>
+      <div className="my-[50px]">
+        <SectionTitle
+          heading="MANAGE ALL USERS"
+          subHeading="---How many??---"
+        ></SectionTitle>
+      </div>
+      <div className="mb-[50px]">
+        <div className="flex justify-between items-center px-[100px] py-[50px]">
+          <h1 className="text-[32px]">Total Users: {users.length} </h1>
+        </div>
+        <div className="px-[100px]">
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>IMAGE</th>
+                  <th>NAME</th>
+                  <th>EMAIL</th>
+                  <th>ROLE</th>
+                  <th>DELETE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((data, index) => (
+                  <tr key={data._id}>
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img
+                              src={data.image}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{data.name}</td>
+                    <td>{data.email}</td>
+                    <td>
+                      <button
+                        onClick={() => handleAdmin(data._id)}
+                        className="btn btn-outline btn-success"
+                      >
+                        <FaUser className="text-[30px]" />
+                      </button>
+                    </td>
+                    <th>
+                      <button
+                        onClick={() => handleDelete(data._id)}
+                        className="btn btn-outline btn-error"
+                      >
+                        <MdDeleteForever className="text-[30px]" />
+                      </button>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AllUsers;
