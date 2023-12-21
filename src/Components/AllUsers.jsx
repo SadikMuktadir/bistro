@@ -14,10 +14,20 @@ const AllUsers = () => {
       return res.data;
     },
   });
-  const handleAdmin =()=>{
-    console.log('done')
-  }
-  const handleDelete = (id) => {
+    const handleAdmin = (user) => {
+      axiosSecure.patch(`/users/${user._id}`)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: `${user.name} is Admin Now`,
+            icon: "success",
+          });
+        }
+      });
+    };
+  
+  const handleDelete = (user) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -28,7 +38,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/users/${id}`).then((res) => {
+        axiosSecure.delete(`/users/${user._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -62,39 +72,45 @@ const AllUsers = () => {
                   <th>IMAGE</th>
                   <th>NAME</th>
                   <th>EMAIL</th>
-                  <th>ROLE</th>
+                  <th className="flex justify-center">ROLE</th>
                   <th>DELETE</th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((data, index) => (
-                  <tr key={data._id}>
+                {users.map((user, index) => (
+                  <tr key={user._id}>
                     <th>{index + 1}</th>
                     <td>
                       <div className="flex items-center gap-3">
                         <div className="avatar">
                           <div className="mask mask-squircle w-12 h-12">
                             <img
-                              src={data.image}
+                              src={user.image}
                               alt="Avatar Tailwind CSS Component"
                             />
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td>{data.name}</td>
-                    <td>{data.email}</td>
-                    <td>
-                      <button
-                        onClick={() => handleAdmin(data._id)}
-                        className="btn btn-outline btn-success"
-                      >
-                        <FaUser className="text-[30px]" />
-                      </button>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td className="flex justify-center">
+                      {user.role === "admin" ? (
+                        <button className="btn btn-outline btn-success">
+                          Admin
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleAdmin(user)}
+                          className="btn btn-outline btn-warning"
+                        >
+                          <FaUser className="text-[30px]" />
+                        </button>
+                      )}
                     </td>
                     <th>
                       <button
-                        onClick={() => handleDelete(data._id)}
+                        onClick={() => handleDelete(user)}
                         className="btn btn-outline btn-error"
                       >
                         <MdDeleteForever className="text-[30px]" />
