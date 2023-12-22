@@ -15,11 +15,11 @@ const Register = () => {
     const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, image, email, password);
+    // console.log(name, image, email, password);
     createUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         updateProfile(user,{
             displayName:name,
             photoURL:image

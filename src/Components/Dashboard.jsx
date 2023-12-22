@@ -38,7 +38,7 @@ const Dashboard = () => {
               <li>
                 <div className="flex ml-[30px] mb-[20px]">
                   <FaUtensils />
-                  <NavLink className="ml-2" to="/dashboard/ourCart">
+                  <NavLink className="ml-2" to="/dashboard/addItems">
                     ADD ITEMS
                   </NavLink>
                 </div>

@@ -10,6 +10,8 @@ import Login from "../Components/Login";
 import PrivetRoute from "../Components/PrivetRoute";
 import Cart from "../Components/Cart";
 import AllUsers from "../Components/AllUsers";
+import AdminRoute from "../Components/AdminRoute";
+import AddItems from "../Components/AddItems";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path:"allUsers",
-        element:<AllUsers></AllUsers>,
+        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>,
+      },
+      {
+        path:"addItems",
+        element:<AdminRoute><AddItems></AddItems></AdminRoute>,
       },
     ]
   },
