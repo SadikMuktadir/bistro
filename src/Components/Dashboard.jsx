@@ -5,9 +5,10 @@ import { FaThList } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaUtensils } from "react-icons/fa";
-// import useAdmin from "../Hooks/useAdmin";
+import useAdmin from "../Hooks/useAdmin";
+
 const Dashboard = () => {
-  // const [isAdmin] = useAdmin();
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-[#D1A054]">
@@ -16,7 +17,8 @@ const Dashboard = () => {
           <h1 className="text-[15px]">Restaurant</h1>
         </div>
         <ul>
-          {/* Admin route */}
+          {isAdmin ? (
+            <>
               <li>
                 <div className="flex ml-[30px] my-[20px]">
                   <FaHome />
@@ -65,6 +67,9 @@ const Dashboard = () => {
                   </NavLink>
                 </div>
               </li>
+            </>
+          ) : (
+            <>
               <li>
                 <div className="flex ml-[30px] mb-[20px]">
                   <FaUsers />
@@ -73,6 +78,8 @@ const Dashboard = () => {
                   </NavLink>
                 </div>
               </li>
+            </>
+          )}
         </ul>
       </div>
       <div className="flex-1">
