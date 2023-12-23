@@ -1,11 +1,14 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "./sectionTitle";
 import useAxiosPublic from "../Hooks/useAxiospublic";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 const AddItems = () => {
   const { register, handleSubmit } = useForm();
   const image_hosting_key = "dd333f2cc5522a05be1e5c3a210debdc";
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const onSubmit = async (data)=>{
     const imageFile = {image:data.image[0]}
     const res = await axiosPublic.post(
@@ -15,7 +18,25 @@ const AddItems = () => {
         }
       }
     )
-    console.log(res.data)
+    if(res.data.success){
+      const menuItem = {
+        recipe:data.recipe,
+        category:data.category,
+        price:parseFloat(data.price),
+        details:data.details,
+        image:res.data.data.display_url
+      }
+      const menuRes = await axiosSecure.post('/menu',menuItem);
+      if(menuRes.data.insertedId){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Item added",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    }
   }
   return (
     <div>
