@@ -3,16 +3,41 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import SectionTitle from "./sectionTitle";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageItems = () => {
     const axiosSecure = useAxiosSecure();
-    const { data: menu = [] } = useQuery({
+    const { data: menu = [],refetch } = useQuery({
       queryKey: ["menu"],
       queryFn: async () => {
         const res = await axiosSecure.get("/menu");
         return res.data;
       },
     });
+    const handleDelete = (menu) => {
+        Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axiosSecure.delete(`/menu/${menu._id}`).then((res) => {
+              if (res.data.deletedCount > 0) {
+                refetch();
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+              }
+            });
+          }
+        });
+      };
   return (
     <div>
       <div className="my-[50px]">
@@ -72,7 +97,7 @@ const ManageItems = () => {
                     </td>
                     <th>
                       <button
-                        // onClick={() => handleDelete(user)}
+                        onClick={() => handleDelete(menu)}
                         className="btn btn-outline btn-error"
                       >
                         <MdDeleteForever className="text-[30px]" />
