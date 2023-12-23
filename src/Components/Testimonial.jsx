@@ -24,8 +24,8 @@ const Testimonial = () => {
           {ratings.map((item) => (
             <SwiperSlide key={item._id}>
               <Rating className="mx-auto mb-2" style={{ maxWidth: 180 }} value={item.rating} readOnly />
-              <p className="mb-2 text-center text-[#CD9003] text-[32px]">{item.name}</p>
-              <p className="text-center text-[20px] ">{item.details}</p>
+              <p className="mb-2 text-center text-[#CD9003] text-[20px] md:text-[32px]">{item.name}</p>
+              <p className="text-center text-[15px] md:text-[20px] ">{item.details}</p>
             </SwiperSlide>
           ))}
         </div>

@@ -43,7 +43,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/ourCart"
           style={({ isActive, isTransitioning }) => {
             return {
               fontWeight: isActive ? "bold" : "bold",
@@ -127,12 +127,12 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-black"
             >
               {navOptions}
             </ul>
           </div>
-          <div className="text-[30px]">Bistro Boss</div>
+          <div className="text-[15px] md:text-[30px]">Bistro Boss</div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>

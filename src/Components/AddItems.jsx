@@ -1,15 +1,15 @@
 import SectionTitle from "./sectionTitle";
 // import img from "../../public/assets/shop/banner2.jpg";
 const AddItems = () => {
-    const handleRegister = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const image = form.image.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(name, image, email, password);
-    }
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const details = form.details.value;
+    console.log(name, category, price, details);
+  };
   return (
     <div>
       <div className="my-[50px]">
@@ -28,62 +28,62 @@ const AddItems = () => {
               <form onSubmit={handleRegister} className="card-body">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Name</span>
+                    <span className="label-text">Recipe name*</span>
                   </label>
                   <input
                     name="name"
                     type="text"
-                    placeholder="Name"
+                    placeholder="Recipe name"
                     className="input input-bordered"
                     required
                   />
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Image URL</span>
+                    <span className="label-text">Category*</span>
+                  </label>
+
+                  <select
+                    className="input input-bordered"
+                    required
+                    name="category"
+                  >
+                    <option value="salad">SALAD</option>
+                    <option value="pizza">PIZZA</option>
+                    <option value="soup">SOUP</option>
+                    <option value="dessert">DESSERT</option>
+                    <option value="drinks">DRINKS</option>
+                  </select>
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Price*</span>
                   </label>
                   <input
-                    name="image"
+                    name="price"
                     type="text"
-                    placeholder="Image URL"
+                    placeholder="Price"
                     className="input input-bordered"
                     required
                   />
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text">Recipe Details*</span>
                   </label>
                   <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
+                    name="details"
+                    type="text"
+                    placeholder="Recipe Details"
                     className="input input-bordered"
                     required
                   />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Password</span>
-                  </label>
-                  <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    className="input input-bordered"
-                    required
-                  />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label>
                 </div>
                 <div className="form-control mt-6">
                   <input
                     className="btn btn-outline btn-warning"
                     type="submit"
-                    value="Register"
+                    value="Add Item"
                   />
                 </div>
               </form>

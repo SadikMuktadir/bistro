@@ -32,12 +32,12 @@ const Cart = () => {
   };
   return (
     <div>
-      <div className="flex justify-between items-center px-[100px] py-[50px]">
-        <h1 className="text-[32px]">Total Orders: {cart.length} </h1>
-        <h1 className="text-[32px]">Total Price: {totalPrice} </h1>
+      <div className="flex flex-col md:flex-row justify-between items-center px-[10px] lg:px-[100px] py-[50px]">
+        <h1 className="text-[20px] lg:text-[32px]">Total Orders: {cart.length} </h1>
+        <h1 className="text-[20px] lg:text-[32px]">Total Price: {totalPrice} </h1>
         <button className="text-[20px] btn btn-outline btn-warning">Pay</button>
       </div>
-      <div className="px-[100px]">
+      <div className="px-[10px] lg:px-[100px]">
         <div className="overflow-x-auto">
           <table className="table">
             <thead>

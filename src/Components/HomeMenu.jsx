@@ -24,7 +24,7 @@ const HomeMenu = () => {
         subHeading="---Check it out---"
         heading="POPULAR MENU"
       ></SectionTitle>
-      <div className="grid grid-cols-2 gap-3 my-[100px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-[100px]">
         {data.map((item) => (
           <Card key={item._id} item={item}></Card>
         ))}

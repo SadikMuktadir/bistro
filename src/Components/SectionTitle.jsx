@@ -3,11 +3,11 @@ const SectionTitle = ({ heading, subHeading }) => {
     <div className="text-center">
       <p className="text-[#D99904] text-[20px]">{subHeading}</p>
       <div className="flex justify-center">
-      <p className="w-[424px] mt-4" style={{border:"4px solid #E8E8E8"}}></p>
+      <p className="w-[100px] md:w-[300px] lg:w-[424px] mt-4" style={{border:"4px solid #E8E8E8"}}></p>
       </div>
-      <p className="text-[#151515] text-[48px] mt-5">{heading}</p>
+      <p className="text-[#151515] text-[20px] md:text-[30px] lg:text-[48px] mt-5">{heading}</p>
       <div className="flex justify-center">
-      <p className="w-[424px] my-4" style={{border:"4px solid #E8E8E8"}}></p>
+      <p className="w-[100px] md:w-[300px] lg:w-[424px] my-4" style={{border:"4px solid #E8E8E8"}}></p>
       </div>
     </div>
   );
