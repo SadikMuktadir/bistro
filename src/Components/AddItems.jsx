@@ -1,15 +1,15 @@
+import { useForm } from "react-hook-form";
 import SectionTitle from "./sectionTitle";
-// import img from "../../public/assets/shop/banner2.jpg";
+import useAxiosPublic from "../Hooks/useAxiospublic";
 const AddItems = () => {
-  const handleRegister = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const category = form.category.value;
-    const price = form.price.value;
-    const details = form.details.value;
-    console.log(name, category, price, details);
-  };
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
+  const image_hosting_key = "dd333f2cc5522a05be1e5c3a210debdc";
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+  const axiosPublic = useAxiosPublic();
+  const onSubmit = async (data)=>{
+    const imageFile = {image:data.image[]}
+  }
   return (
     <div>
       <div className="my-[50px]">
@@ -18,76 +18,86 @@ const AddItems = () => {
           subHeading="---How many??---"
         ></SectionTitle>
       </div>
-      <div>
-        <div className="hero min-h-screen">
-          <div className="hero-content flex-col lg:flex-row-reverse w-[600px]">
-            <div>
-              <img src="" alt="" />
-            </div>
-            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-              <form onSubmit={handleRegister} className="card-body">
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Recipe name*</span>
-                  </label>
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder="Recipe name"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Category*</span>
-                  </label>
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col lg:flex-row">
+          <div className="card shrink-0 w-[400px] max-w-sm shadow-2xl">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Recipe name*</span>
+                </label>
+                <input
+                  {...register("recipe")}
+                  name="recipe"
+                  type="text"
+                  placeholder="Recipe name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Category*</span>
+                </label>
+                <select
+                  name="category"
+                  {...register("category")}
+                  placeholder="Category*"
+                  className="input input-bordered"
+                >
+                  <option value="salad">SALAD</option>
+                  <option value="pizza">PIZZA</option>
+                  <option value="soup">SOUP</option>
+                  <option value="dessert">DESSERT</option>
+                  <option value="drinks">DRINKS</option>
+                </select>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Price*</span>
+                </label>
+                <input
+                  name="price"
+                  {...register("price")}
+                  type="text"
+                  placeholder="Price"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Recipe Details*</span>
+                </label>
+                <input
+                  name="details"
+                  {...register("details")}
+                  type="text"
+                  placeholder="Recipe Details*"
+                  className="input input-bordered h-[150px]"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Image File*</span>
+                </label>
+                <input
+                  name="image"
+                  {...register("image")}
+                  type="file"
+                  placeholder="Recipe Details*"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
 
-                  <select
-                    className="input input-bordered"
-                    required
-                    name="category"
-                  >
-                    <option value="salad">SALAD</option>
-                    <option value="pizza">PIZZA</option>
-                    <option value="soup">SOUP</option>
-                    <option value="dessert">DESSERT</option>
-                    <option value="drinks">DRINKS</option>
-                  </select>
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Price*</span>
-                  </label>
-                  <input
-                    name="price"
-                    type="text"
-                    placeholder="Price"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text">Recipe Details*</span>
-                  </label>
-                  <input
-                    name="details"
-                    type="text"
-                    placeholder="Recipe Details"
-                    className="input input-bordered"
-                    required
-                  />
-                </div>
-                <div className="form-control mt-6">
-                  <input
-                    className="btn btn-outline btn-warning"
-                    type="submit"
-                    value="Add Item"
-                  />
-                </div>
-              </form>
-            </div>
+              <input
+                className="btn btn-outline btn-warning"
+                type="submit"
+                value="Add Items"
+              />
+            </form>
           </div>
         </div>
       </div>
