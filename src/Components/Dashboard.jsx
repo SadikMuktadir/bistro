@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-// import { FaThList } from "react-icons/fa";
+import { FaThList } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 // import { FaBook } from "react-icons/fa";
 import { FaUtensils } from "react-icons/fa";
@@ -37,20 +37,20 @@ const Dashboard = () => {
               </li>
               <li>
                 <div className="flex ml-[30px] mb-[20px]">
+                  <FaThList />
+                  <NavLink className="ml-2" to="/dashboard/manageItems">
+                    MANAGE ITEMS
+                  </NavLink>
+                </div>
+              </li>
+              <li>
+                <div className="flex ml-[30px] mb-[20px]">
                   <FaUtensils />
                   <NavLink className="ml-2" to="/dashboard/addItems">
                     ADD ITEMS
                   </NavLink>
                 </div>
               </li>
-              {/* <li>
-                <div className="flex ml-[30px] mb-[20px]">
-                  <FaThList />
-                  <NavLink className="ml-2" to="/dashboard/ourCart">
-                    MANAGE ITEMS
-                  </NavLink>
-                </div>
-              </li> */}
               {/* <li>
                 <div className="flex ml-[30px] mb-[20px]">
                   <FaBook />

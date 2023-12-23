@@ -20,10 +20,10 @@ const AddItems = () => {
     )
     if(res.data.success){
       const menuItem = {
-        recipe:data.recipe,
+        name:data.name,
         category:data.category,
         price:parseFloat(data.price),
-        details:data.details,
+        recipe:data.recipe,
         image:res.data.data.display_url
       }
       const menuRes = await axiosSecure.post('/menu',menuItem);
@@ -55,8 +55,7 @@ const AddItems = () => {
                   <span className="label-text">Recipe name*</span>
                 </label>
                 <input
-                  {...register("recipe")}
-                  name="recipe"
+                  {...register("name")}
                   type="text"
                   placeholder="Recipe name"
                   className="input input-bordered"
@@ -68,7 +67,6 @@ const AddItems = () => {
                   <span className="label-text">Category*</span>
                 </label>
                 <select
-                  name="category"
                   {...register("category")}
                   placeholder="Category*"
                   className="input input-bordered"
@@ -85,9 +83,8 @@ const AddItems = () => {
                   <span className="label-text">Price*</span>
                 </label>
                 <input
-                  name="price"
                   {...register("price")}
-                  type="text"
+                  type="number"
                   placeholder="Price"
                   className="input input-bordered"
                   required
@@ -98,8 +95,7 @@ const AddItems = () => {
                   <span className="label-text">Recipe Details*</span>
                 </label>
                 <input
-                  name="details"
-                  {...register("details")}
+                  {...register("recipe")}
                   type="text"
                   placeholder="Recipe Details*"
                   className="input input-bordered h-[150px]"
@@ -111,7 +107,6 @@ const AddItems = () => {
                   <span className="label-text">Image File*</span>
                 </label>
                 <input
-                  name="image"
                   {...register("image")}
                   type="file"
                   placeholder="Recipe Details*"

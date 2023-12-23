@@ -51,7 +51,7 @@ const handleAddToCart =(food)=>{
           <h2 className="card-title">{name}</h2>
           <p>{recipe}</p>
           <div className="">
-          <p className=" bg-[#111827] text-center text-white p-2 w-[50px]">{price}</p>
+          <p className=" bg-[#111827] text-center text-white p-2 w-[50px]">${price}</p>
           </div>
           <div className="card-actions justify-center">
            <Link to=""><button onClick={()=>handleAddToCart(item)} className="btn btn-outline btn-secondary">Add To Cart</button></Link>

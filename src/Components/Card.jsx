@@ -13,7 +13,7 @@ const {image,name,recipe,price} = item;
                 <p className="w-[100px] lg:w-[443px] text-[16px] text-[#737373]">{recipe}</p>
             </div>
             <div>
-                <p className="text-[#BB8506] text-[20px]">{price}</p>
+                <p className="text-[#BB8506] text-[20px]">${price}</p>
             </div>
             </div>
         </div>
