@@ -3,12 +3,19 @@ import SectionTitle from "./sectionTitle";
 import useAxiosPublic from "../Hooks/useAxiospublic";
 const AddItems = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
   const image_hosting_key = "dd333f2cc5522a05be1e5c3a210debdc";
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
   const axiosPublic = useAxiosPublic();
   const onSubmit = async (data)=>{
-    const imageFile = {image:data.image[]}
+    const imageFile = {image:data.image[0]}
+    const res = await axiosPublic.post(
+      image_hosting_api,imageFile,{
+        headers:{
+          'content-type':'multipart/form-data'
+        }
+      }
+    )
+    console.log(res.data)
   }
   return (
     <div>
