@@ -4,40 +4,41 @@ import SectionTitle from "./sectionTitle";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-    const axiosSecure = useAxiosSecure();
-    const { data: menu = [],refetch } = useQuery({
-      queryKey: ["menu"],
-      queryFn: async () => {
-        const res = await axiosSecure.get("/menu");
-        return res.data;
-      },
-    });
-    const handleDelete = (menu) => {
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            axiosSecure.delete(`/menu/${menu._id}`).then((res) => {
-              if (res.data.deletedCount > 0) {
-                refetch();
-                Swal.fire({
-                  title: "Deleted!",
-                  text: "Your file has been deleted.",
-                  icon: "success",
-                });
-              }
+  const axiosSecure = useAxiosSecure();
+  const { data: menu = [], refetch } = useQuery({
+    queryKey: ["menu"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/menu");
+      return res.data;
+    },
+  });
+  const handleDelete = (menu) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/menu/${menu._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
             });
           }
         });
-      };
+      }
+    });
+  };
   return (
     <div>
       <div className="my-[50px]">
@@ -48,7 +49,9 @@ const ManageItems = () => {
       </div>
       <div className="mb-[50px]">
         <div className="flex justify-between items-center px-[100px] py-[50px]">
-          <h1 className="text-[20px] md:text-[32px]">Total Menu: {menu.length} </h1>
+          <h1 className="text-[20px] md:text-[32px]">
+            Total Menu: {menu.length}{" "}
+          </h1>
         </div>
         <div className="lg:px-[100px]">
           <div className="overflow-x-auto">
@@ -82,18 +85,9 @@ const ManageItems = () => {
                     <td>{menu.name}</td>
                     <td>${menu.price}</td>
                     <td className="flex justify-center">
-                      {menu.role === "admin" ? (
-                        <button className="btn btn-outline btn-success">
-                          Admin
-                        </button>
-                      ) : (
-                        <button
-                        //   onClick={() => handleAdmin(user)}
-                          className="btn btn-outline btn-warning"
-                        >
-                          <FaEdit className="text-[30px]" />
-                        </button>
-                      )}
+                      <Link to={`/dashboard/update/${menu._id}`}><button className="btn btn-outline btn-warning">
+                        <FaEdit className="text-[30px]" />
+                      </button></Link>
                     </td>
                     <th>
                       <button
